@@ -1,0 +1,11 @@
+body{
+    background-image: url(../src/assets/images/login-bg.png);
+    font-family: Poppins;
+}
+@font-face {
+    font-family: Poppins;
+    src: url(../src/components/Fonts/Poppins-Regular.ttf)
+}   
+.Poppins {
+    font-family: Poppins;
+}
