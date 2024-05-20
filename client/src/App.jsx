@@ -14,6 +14,7 @@ import ResetPassword from './components/pages/users/Auth/resetPassword';
 import Userdashboard from './components/pages/users/Home/Pages/userdashboard';
 import Profile from './components/pages/users/Home/Pages/profile';
 import ViewAnalytics from './components/pages/users/Home/Pages/viewAnalytics';
+import Activities from './components/pages/users/Home/Pages/activities';
 
 /* admin */
 import AuthAdmin from './components/pages/admin/auth';
@@ -54,6 +55,7 @@ function App() {
           <Route path="/userdashboard" element={<Userdashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/viewAnalytics" element={<ViewAnalytics />} />
+          <Route path="/activities" element={<Activities />} />
           
 
           {/* Admin */}

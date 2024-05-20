@@ -137,7 +137,7 @@ const UserDashboard = () => {
 					<th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">Start Date</th>
 					<th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">End Date</th>
 					<th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">Status</th>
-					<th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">Edit</th>
+					<th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900" >Edit</th>
 					<th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">Delete</th>
 					</tr>
 				</thead>
@@ -200,7 +200,7 @@ const UserDashboard = () => {
 					<td className="inline-flex items-center gap-2 border mt-3 bg-green-100 rounded-2xl whitespace-nowrap px-4 py-2 text-gray-700">
 						<GoDotFill className='text-green-500' /> Active
 					</td>
-					<td className="text-2xl whitespace-nowrap px-4 py-2 text-yellow-700"><FaRegEdit /></td>
+					<td onClick={()=>document.getElementById('my_modal_5').showModal()} className="text-2xl whitespace-nowrap px-4 py-2 text-yellow-700" ><FaRegEdit  /></td>
 					<td className="text-2xl whitespace-nowrap px-4 py-2 text-red-700"><FaRegTrashCan /></td>
 					</tr>
 	
