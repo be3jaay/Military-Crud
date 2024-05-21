@@ -1,7 +1,8 @@
 import React from 'react'
 import { SidebarData } from './sidebarData'; 
 import Profile from '../../../../../assets/images/profile.png'
-
+import { LineGraph } from '../Charts/line';
+import { BarGraph } from '../Charts/bar';
 const Sidebar = () => {
 	return (
 	  <nav className="w-64 h-full bg-white drop-shadow-lg text-black flex flex-col">
@@ -43,7 +44,7 @@ const viewAnalytics = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
                 <div className="stat-title text-black font-bold">Ongoing Activities</div>
-                <div className="stat-value text-secondary">2</div>
+                <div className="stat-value text-yellow-700">2</div>
                 <div className="stat-desc text-gray-500">Ongoing Military Progress Activities</div>
             </div>
             
@@ -61,6 +62,17 @@ const viewAnalytics = () => {
             </div>
     
     </div>
+  <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 p-5">
+    <div className=" w-full rounded-lg bg-white border border-black p-3 lg:col-span-2">
+      <LineGraph />
+    </div>
+    <div className=" w-full rounded-lg bg-white border border-black p-3 lg:col-span-2">
+      <BarGraph />
+    </div>
+    </div>
+    
+    
+    
         </section>
       </div>
     </div>

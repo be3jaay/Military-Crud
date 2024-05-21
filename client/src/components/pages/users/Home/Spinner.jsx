@@ -1,11 +1,13 @@
 import React from 'react';
-
+import '../../../../App.css'
 const Spinner = () => {
   return (
     <div id="spinner" className="fixed bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-full h-screen">
-      <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
-        <span className="sr-only">Loading...</span>
-      </div>
+          <div class="typewriter">
+        <div class="slide"><i></i></div>
+        <div class="paper"></div>
+        <div class="keyboard"></div>
+    </div>
     </div>
   );
 };

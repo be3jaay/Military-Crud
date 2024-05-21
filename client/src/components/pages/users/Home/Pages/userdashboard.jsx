@@ -143,7 +143,7 @@ const UserDashboard = () => {
 				</thead>
 				<tbody className="divide-y divide-gray-200">
 					<tr>
-					<td className="px-4 py-6">
+					<td className="px-4 py-6 ">
 						<label className="sr-only" htmlFor="Row1">Row 1</label>
 						<input className="size-5 rounded border-gray-300" type="checkbox" id="Row1" />
 					</td>
