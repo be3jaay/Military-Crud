@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import illustration from '../../../../assets/images/illustration.png'
-import ForgetPassword from './forgetPassword';
-import Registration from './registration';
+
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -66,36 +65,36 @@ function Login() {
             
                 <div className="flex items-center justify-between w-full h-screen bg-dark-gray-800">
                 <img className="w-92 h-auto ml-80 "src={illustration} alt="" />
-                    <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-gray-900  p-8 h-screen">
-                        <h3 className="mb-3 text-4xl font-extrabold text-white text-center">Sign In</h3>
-                        <p className="mb-4 text-gray-400 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem a voluptas, officia fugit nihil iste praesentium similique quisquam voluptates veritatis fuga, error dignissimos totam eum quod architecto minima beatae culpa.</p>
+                    <form onSubmit={handleSubmit} className="w-full max-w-2xl border shadow-lg border-black  p-8 h-screen">
+                        <h3 className="mb-3 text-4xl font-extrabold text-center">Sign In</h3>
+                        <p className="mb-4  text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem a voluptas, officia fugit nihil iste praesentium similique quisquam voluptates veritatis fuga, error dignissimos totam eum quod architecto minima beatae culpa.</p>
                         <div className="mb-3">
-                            <label htmlFor="username" className="block text-sm font-medium text-white">Username</label>
+                            <label htmlFor="username" className="block text-sm font-medium ">Username</label>
                             <input
                                 id="username"
                                 type="text"
                                 placeholder="Username"
-                                className="w-full px-4 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                                className="w-full px-4 py-3 mt-1 text-sm bg-transparent border border-black  rounded-lg focus:outline-none focus:border-purple-blue-500"
                                 value={username}
                                 onChange={handleUsernameChange}
                             />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="password" className="block text-sm font-medium text-white">Password</label>
+                            <label htmlFor="password" className="block text-sm font-medium ">Password</label>
                             <div className="relative">
                                 <input
                                     id="password"
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="Enter your password"
-                                    className="w-full px-4 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                                    className="w-full px-4 py-3 mt-1 text-sm bg-transparent border border-black text-black rounded-lg focus:outline-none focus:border-purple-blue-500"
                                     value={password}
                                     onChange={handlePasswordChange}
                                 />
                                 <button
                                     type="button"
                                     onClick={toggleShowPassword}
-                                    className="absolute inset-y-0 right-0 flex items-center px-3 text-white"
+                                    className="absolute inset-y-0 right-0 flex items-center px-3 "
                                 >
                                     {showPassword ? 'Hide' : 'Show'}
                                 </button>
@@ -110,12 +109,12 @@ function Login() {
                                     onChange={handleRememberMeChange}
                                     className="mr-2 leading-tight"
                                 />
-                                <span className="text-sm font-normal text-gray-400">Remember me</span>
+                                <span className="text-sm font-normal">Remember me</span>
                             </label>
-                            <Link to={ForgetPassword} className='text-sm font-medium text-white'>Forgot password?</Link>
+                            <Link to='/forget-password'className='text-sm font-medium '>Forgot password?</Link>
                         </div>
                         
-                        <button type="submit" className="w-full py-3 text-sm font-bold leading-none text-white bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg hover:opacity-0.8 focus:outline-none focus:bg-purple-600">Sign in</button>
+                        <button type="submit" className="w-full py-3 text-sm font-bold leading-none text-white bg-black rounded-md">Sign in</button>
                         
                         {loginSuccess && (
                             <div role="alert" className="alert alert-success mt-4">
@@ -135,7 +134,7 @@ function Login() {
                             </div>
                         )}
 
-                        <p className="mt-4 text-sm text-gray-400">Not registered yet? <Link to={Registration}className="font-bold text-purple-blue-500 hover:text-purple-blue-600">Create an Account</Link></p>
+                        <p className="mt-4 text-sm ">Not registered yet? <Link to='/registration'className="font-bold text-purple-blue-500 hover:text-purple-blue-600">Create an Account</Link></p>
                     </form>
                 </div>
         </div>

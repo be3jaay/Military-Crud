@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import illustration from '../../../../assets/images/illustration.png'
+import { Link } from 'react-router-dom'
 function RegistrationForm() {
     const [fullname, setFullname] = useState('');
     const [username, setUsername] = useState('');
@@ -87,61 +88,61 @@ function RegistrationForm() {
     return (
         <div className="flex items-center justify-between w-full h-screen bg-dark-gray-800">
         <img className="w-92 h-auto ml-80"src={illustration} alt="" />
-            <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-gray-900 shadow-lg p-8 h-screen">
-                <h3 className="mb-3 text-2xl font-extrabold text-white text-center">Register</h3>
-                <p className="mb-4 text-sm text-gray-400 text-center">Create your account</p>
+            <form onSubmit={handleSubmit} className="w-full max-w-2xl shadow-lg border-black p-8 h-screen">
+                <h3 className="mb-3 text-2xl font-extrabold text-center">Register</h3>
+                <p className="mb-4 text-sm  text-center">Create your account</p>
                 
                 <div className="mb-3">
-                    <label htmlFor="fullname" className="block text-sm font-medium text-white">Full Name*</label>
+                    <label htmlFor="fullname" className="block text-sm font-medium ">Full Name*</label>
                     <input
                         id="fullname"
                         type="text"
                         placeholder="John Doe"
-                        className="w-full px-3 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                        className="w-full px-3 py-3 mt-1 text-sm bg-transparent border border-black text-black  rounded-lg focus:outline-none focus:border-purple-blue-500"
                         value={fullname}
                         onChange={handleFullnameChange}
                     />
                 </div>
                 
                 <div className="mb-3">
-                    <label htmlFor="username" className="block text-sm font-medium text-white">Username*</label>
+                    <label htmlFor="username" className="block text-sm font-medium ">Username*</label>
                     <input
                         id="username"
                         type="text"
                         placeholder="Choose a username"
-                        className="w-full px-3 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                        className="w-full px-3 py-3 mt-1 text-sm  bg-transparent border border-black text-black rounded-lg focus:outline-none focus:border-purple-blue-500"
                         value={username}
                         onChange={handleUsernameChange}
                     />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="email" className="block text-sm font-medium text-white">Email*</label>
+                    <label htmlFor="email" className="block text-sm font-medium ">Email*</label>
                     <input
                         id="email"
                         type="email"
                         placeholder="email@example.com"
-                        className="w-full px-3 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                        className="w-full px-3 py-3 mt-1 text-sm bg-transparent border border-black text-black rounded-lg focus:outline-none focus:border-purple-blue-500"
                         value={email}
                         onChange={handleEmailChange}
                     />
                 </div>
                 
                 <div className="mb-3">
-                    <label htmlFor="password" className="block text-sm font-medium text-white">Password*</label>
+                    <label htmlFor="password" className="block text-sm font-medium ">Password*</label>
                     <div className="relative">
                         <input
                             id="password"
                             type={showPassword ? 'text' : 'password'}
                             placeholder="Enter a password"
-                            className="w-full px-3 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                            className="w-full px-3 py-3 mt-1 text-sm bg-transparent border border-black text-black rounded-lg focus:outline-none focus:border-purple-blue-500"
                             value={password}
                             onChange={handlePasswordChange}
                         />
                         <button
                             type="button"
                             onClick={toggleShowPassword}
-                            className="absolute inset-y-0 right-0 flex items-center px-2 text-white"
+                            className="absolute inset-y-0 right-0 flex items-center px-2 "
                         >
                             {showPassword ? 'Hide' : 'Show'}
                         </button>
@@ -149,27 +150,27 @@ function RegistrationForm() {
                 </div>
                 
                 <div className="mb-3">
-                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-white">Confirm Password*</label>
+                    <label htmlFor="confirmPassword" className="block text-sm font-medium ">Confirm Password*</label>
                     <div class="relative">
                         <input
                             id="confirmPassword"
                             type={showPassword ? 'text' : 'password'}
                             placeholder="Confirm your password"
-                            className="w-full px-3 py-3 mt-1 text-sm bg-gray-700 text-white rounded-lg focus:outline-none focus:border-purple-blue-500"
+                            className="w-full px-3 py-3 mt-1 text-sm bg-transparent border border-black text-black rounded-lg focus:outline-none focus:border-purple-blue-500"
                             value={confirmPassword}
                             onChange={handleConfirmPasswordChange}
                         />
                         <button
                             type="button"
                             onClick={toggleShowPassword}
-                            className="absolute inset-y-0 right-0 flex items-center px-2 text-white"
+                            className="absolute inset-y-0 right-0 flex items-center px-2 "
                         >
                             {showPassword ? 'Hide' : 'Show'}
                         </button>
                     </div>
                 </div>
 
-                <button type="submit" className="w-full py-3 text-sm font-bold leading-none text-white bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg hover:opacity-0.8 focus:outline-none focus:bg-purple-600">
+                <button type="submit" className="w-full py-3 text-sm font-bold leading-none text-white bg-black rounded-md">
                     Register
                 </button>
 
@@ -198,9 +199,9 @@ function RegistrationForm() {
                 )}
 
                 <p className="mt-4 text-sm text-center text-gray-400">{message}</p>
-                <p className="mt-4 text-sm text-center text-gray-400">
+                <p className="mt-4 text-sm text-center ">
 
-                    Already have an account? <a href="/login" className="font-bold text-purple-blue-500 hover:text-purple-blue-600">Sign In</a>
+                    Already have an account? <Link to='/login' className="font-bold text-purple-blue-500 hover:text-purple-blue-600">Sign In</Link>
                 </p>
 
             </form>

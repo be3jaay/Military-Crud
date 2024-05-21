@@ -1,6 +1,5 @@
 body{
-    background-image: url(../src/assets/images/login-bg.png);
-    font-family: Poppins;
+    background-color: #f3f3f3;
 }
 @font-face {
     font-family: Poppins;

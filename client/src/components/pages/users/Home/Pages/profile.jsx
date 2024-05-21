@@ -1,5 +1,5 @@
 import React from 'react'
-import { SidebarData } from './sidebarData'; 
+import { Sidebar } from './Sidebar/sidebar'; 
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { FaUserAstronaut } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -7,35 +7,16 @@ import Profile from '../../../../../assets/images/profile.png'
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaKey } from "react-icons/fa";
 
-const Sidebar = () => {
-	return (
-	  <nav className="w-64 h-full bg-white drop-shadow-lg text-black flex flex-col">
-		<div className="profile-info p-3 flex items-center justify-center flex-col mb-6">
-			<img src={Profile} className="w-16 h-auto rounded-full"alt="" />
-			<span className='text-xl font-bold text-gray-400'>Franklin Mayad</span>
-		</div>
-		
-		<ul className="flex-grow">
-		  {SidebarData.map((item, index) => (
-			<a key={index} href={item.path} className="flex items-center p-4 hover:bg-black hover:text-white">
-			  <span className="mr-4">{item.icon}</span>
-			  <span>{item.title}</span>
-			</a>
-		  ))}
-		</ul>
-	  </nav>
-	);
-  };
 const profile = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
       <div className='bg-white flex-grow p-7'>
-		<h1 className='text-2xl font-bold '>Profile</h1>
-		<p className='text-md text-gray-500 mb-2'>Manage your profile</p>
-		<hr className='my-5 w-full'/>
+		<h1 className='text-2xl font-bold text-center'>Profile</h1>
+		<p className='text-md text-gray-500 mb-2 text-center'>Manage your profile</p>
+		<hr className='my-5 w-full '/>
 		
-			<div className="">
+			<div className="flex items-center justify-center flex-col shadow-md p-10">
 				<h1 className='text-2xl font-bold'>Basic Information 👨‍💻</h1>
 				<p className='text-md text-gray-500 mb-6'>Tell us your basic information</p>
 				<span className='text-gray-500'>Full Name</span>
@@ -58,15 +39,12 @@ const profile = () => {
 				<FaKey />
 					<input type="password" className="grow" placeholder='Confirm New Password' />
 				</label>
-			</div>
-			
-		
-		<hr className='my-5 w-full'/>
+
 		<div className="flex items-center justify-center flex-col">
 			
 		</div>
 		<span className='block'>Profile Picture</span>
-		<div className="flex items-center justify-start mb-2">
+		<div className="flex items-center my-3">
 			<img src={Profile} alt="" className='w-16 h-auto rounded-full mr-2' />
 			<button
 			className="flex items-center justify-center rounded bg-white border-black border-1 text-black px-8 py-3 text-sm font-medium transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
@@ -80,6 +58,10 @@ const profile = () => {
 		href="#"
 		>Update
 		</button>
+			</div>
+			
+		
+		
 
 
       </div>

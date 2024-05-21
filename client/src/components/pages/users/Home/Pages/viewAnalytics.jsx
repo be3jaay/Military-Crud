@@ -1,27 +1,9 @@
 import React from 'react'
-import { SidebarData } from './sidebarData'; 
+import { Sidebar } from './Sidebar/sidebar'; 
 import Profile from '../../../../../assets/images/profile.png'
 import { LineGraph } from '../Charts/line';
 import { BarGraph } from '../Charts/bar';
-const Sidebar = () => {
-	return (
-	  <nav className="w-64 h-full bg-white drop-shadow-lg text-black flex flex-col">
-		<div className="profile-info p-3 flex items-center justify-center flex-col mb-6">
-			<img src={Profile} className="w-16 h-auto rounded-full"alt="" />
-			<span className='text-xl font-bold text-gray-400'>Franklin Mayad</span>
-		</div>
-		
-		<ul className="flex-grow">
-		  {SidebarData.map((item, index) => (
-			<a key={index} href={item.path} className="flex items-center p-4 hover:bg-black hover:text-white">
-			  <span className="mr-4">{item.icon}</span>
-			  <span>{item.title}</span>
-			</a>
-		  ))}
-		</ul>
-	  </nav>
-	);
-  };
+
 const viewAnalytics = () => {
   return (
     <div className="flex h-screen">
@@ -62,11 +44,11 @@ const viewAnalytics = () => {
             </div>
     
     </div>
-  <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 p-5">
-    <div className=" w-full rounded-lg bg-white border border-black p-3 lg:col-span-2">
+  <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 p-5 ">
+    <div className=" w-full rounded-lg bg-white border border-black p-3 shadow-md lg:col-span-2">
       <LineGraph />
     </div>
-    <div className=" w-full rounded-lg bg-white border border-black p-3 lg:col-span-2">
+    <div className=" w-full rounded-lg bg-white border border-black p-3 shadow-md lg:col-span-2">
       <BarGraph />
     </div>
     </div>

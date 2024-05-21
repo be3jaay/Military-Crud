@@ -41,23 +41,24 @@ function ForgetPassword() {
 
     return (
         <div className="flex items-center justify-center h-screen bg-dark-gray-800">
-            <form onSubmit={handleSubmit} className="w-full max-w-md bg-gray-900 rounded-lg shadow-lg p-8">
-                <h3 className="mb-3 text-4xl font-extrabold text-white text-center">Forgot Password?</h3>
-                <p className="mb-4 text-white text-center">Enter your email to receive password reset link</p>
+            <form onSubmit={handleSubmit} className="w-full max-w-md bg-white text-black rounded-lg shadow-lg p-8">
+                <h3 className="mb-3 text-4xl font-extrabold text-center">Forgot Password?</h3>
+                <p className="mb-4 text-center">Enter your email to receive password reset link</p>
                 
                 <div className="mb-3">
-                    <label htmlFor="email" className="block text-sm font-medium text-white">Email*</label>
+                    <label htmlFor="email" className="block text-sm font-medium">Email*</label>
                     <input
                         id="email"
                         type="email"
                         placeholder="youremailaddress@gmail.com"
-                        className="w-full px-4 py-3 mt-1 text-sm bg-grey-200 text-white placeholder-white text-dark-grey-900 rounded-lg focus:outline-none focus:border-purple-blue-500"
+                        className="w-full px-4 py-3 mt-1 text-sm bg-white border border-black rounded-md placeholder-black"
                         value={email}
                         onChange={handleEmailChange}
                     />
+                    
                 </div>
                 
-                <button type="submit" className="w-full py-3 text-sm font-bold leading-none text-white bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg hover:opacity-0.8 focus:outline-none focus:bg-purple-600">Send Reset Link</button>
+                <button type="submit" className="w-full py-3 text-sm font-bold leading-none text-white bg-black rounded-md">Send Reset Link</button>
 
                 {/* Success alert */}
                 {passwordResetSuccess && (
