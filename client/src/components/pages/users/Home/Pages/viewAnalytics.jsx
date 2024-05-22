@@ -52,9 +52,6 @@ const viewAnalytics = () => {
       <BarGraph />
     </div>
     </div>
-    
-    
-    
         </section>
       </div>
     </div>

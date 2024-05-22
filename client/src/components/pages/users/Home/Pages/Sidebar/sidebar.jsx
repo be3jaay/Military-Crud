@@ -3,7 +3,8 @@ import { HiOutlineViewGrid } from "react-icons/hi";
 import { IoIosAnalytics } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { IoMdExit } from "react-icons/io";
-import { FaBars } from "react-icons/fa";
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
+
 import Profile from '../../../../../../assets/images/profile.png';
 
 const SidebarData = [
@@ -38,9 +39,9 @@ export const Sidebar = () => {
   };
 
   return (
-    <nav className={`h-full bg-white drop-shadow-lg text-black flex flex-col ${isCollapsed ? 'w-20' : 'w-64'}`}>
-       <button onClick={toggleSidebar} className="text-md flex items-center justify-end mt-5 lg:mr-3">
-          <FaBars />
+    <nav className={`h-full bg-white drop-shadow-lg text-black flex flex-col ${isCollapsed ? 'w-20 '  : 'w-64' }`}>
+       <button onClick={toggleSidebar} className="text-2xl mt-2 mr-1 flex items-end justify-end">
+       <TbLayoutSidebarLeftCollapseFilled />
         </button>
       <div className="p-3 flex items-center justify-between flex-col">
         {!isCollapsed && (
