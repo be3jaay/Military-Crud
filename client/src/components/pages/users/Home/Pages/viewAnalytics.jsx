@@ -6,7 +6,7 @@ import { BarGraph } from '../Charts/bar';
 
 const viewAnalytics = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen ">
       <Sidebar />
       <div className='bg-white flex-grow'>
       <section className="bg-white">
@@ -44,13 +44,16 @@ const viewAnalytics = () => {
             </div>
     
     </div>
-  <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 p-5 ">
-    <div className=" w-full rounded-lg bg-white border border-black p-3 shadow-md lg:col-span-2">
-      <LineGraph />
+    
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 p-5 ">
+      <div className=" w-full rounded-lg bg-white border border-black p-3 shadow-md lg:col-span-2">
+        <LineGraph />
+      </div>
+      <div className=" w-full rounded-lg bg-white border border-black p-3 shadow-md lg:col-span-2">
+        <BarGraph />
+      </div>
     </div>
-    <div className=" w-full rounded-lg bg-white border border-black p-3 shadow-md lg:col-span-2">
-      <BarGraph />
-    </div>
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 p-5 ">
     </div>
         </section>
       </div>
