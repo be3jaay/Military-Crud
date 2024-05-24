@@ -18,7 +18,6 @@ import Activities from './components/pages/users/Home/Pages/activities';
 
 /* admin */
 import AuthAdmin from './components/pages/admin/auth';
-import Dashboard from './components/pages/admin/Home/dashboard';
 import AdminAnalytics from './components/pages/admin/adminAnalytics';
 import AdminProfile from './components/pages/admin/Home/adminProfile';
 import PlatoonProfile from './components/pages/admin/Home/platoonProfile'
@@ -62,7 +61,6 @@ function App() {
 
           {/* Admin */}
           <Route path="/admin/auth" element={<AuthAdmin />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/adminAnalytics" element={<AdminAnalytics />} />
           <Route path="/adminProfile" element={<AdminProfile />} />
         </Routes>
