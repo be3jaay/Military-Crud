@@ -1,7 +1,7 @@
 // models/Description.js
 const mongoose = require('mongoose');
 
-const activitySchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: 
     { 
       type: String, 
@@ -29,4 +29,4 @@ const activitySchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Activity', activitySchema);
+module.exports = mongoose.model('Activity', UserSchema);

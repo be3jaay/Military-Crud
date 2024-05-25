@@ -11,7 +11,8 @@ export const Sidebar = () => {
   };
 
   return (
-    <nav className={`h-full bg-white drop-shadow-lg text-black flex flex-col ${isCollapsed ? 'w-20 '  : 'w-64' }`}>
+    <div className="bg-white drop-shadow-lg">
+    <nav className={`h-screen bg-white text-black flex flex-col ${isCollapsed ? 'w-20 '  : 'w-64' }`}>
        <button onClick={toggleSidebar} className="text-2xl mt-2 mr-1 flex items-end justify-end">
        <TbLayoutSidebarLeftCollapseFilled />
         </button>
@@ -32,5 +33,6 @@ export const Sidebar = () => {
         ))}
       </ul>
     </nav>
+    </div>
   );
 };

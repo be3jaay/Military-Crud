@@ -19,8 +19,8 @@ import Activities from './components/pages/users/Home/Pages/activities';
 /* admin */
 import AuthAdmin from './components/pages/admin/auth';
 import AdminAnalytics from './components/pages/admin/adminAnalytics';
+import Pending from './components/pages/admin/Home/pending';
 import AdminProfile from './components/pages/admin/Home/adminProfile';
-import PlatoonProfile from './components/pages/admin/Home/platoonProfile'
 
 import './App.css';
 
@@ -57,12 +57,13 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/viewAnalytics" element={<ViewAnalytics />} />
           <Route path="/activities" element={<Activities />} />
-          <Route path="/platoonProfile" element={<PlatoonProfile />} />
+
 
           {/* Admin */}
           <Route path="/admin/auth" element={<AuthAdmin />} />
           <Route path="/adminAnalytics" element={<AdminAnalytics />} />
           <Route path="/adminProfile" element={<AdminProfile />} />
+          <Route path="/pending" element={<Pending />} />
         </Routes>
       </div>
     </Router>

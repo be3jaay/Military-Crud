@@ -2,7 +2,7 @@ import React from 'react'
 import { Sidebar } from './Home/Sidebar/sidebar'
 import Profile from '../../../assets/images/profile.png'
 import { LineGraph } from './Home/Charts/line';
-import { BarGraph } from '../users/Home/Pages/Charts/bar';
+import { BarGraph } from './Home/Charts/bar';
 import { PieGraph } from './Home/Charts/pie';
 const adminAnalytics = () => {
   return (
