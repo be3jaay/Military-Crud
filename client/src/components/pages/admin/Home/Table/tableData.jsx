@@ -1,5 +1,5 @@
 export const tableData = [
     {
-        th: ''
+        th: 'asd'
     }
 ]
