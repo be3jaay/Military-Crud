@@ -1,4 +1,5 @@
-const User = require('../model/users/userModel'); // Import your AuthAdmin model
+const User = require('../model/users/userModel'); // Import your AuthUser model
+const UserActivities = require('../model/users/userActivity'); // Import your userActivity model
 
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
@@ -6,6 +7,62 @@ const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 const secretKey = 'your-secret-key'; // Make sure to keep this secret key secure
 
+// User Activities
+exports.getAllActivities = async (req, res) => {
+    try {
+        const search = req.query.search || '';
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+    
+        const query = {
+          name: { $regex: search, $options: 'i' }
+        };
+    
+        const activities = await UserActivities.find(query)
+          .skip((page - 1) * limit)
+          .limit(limit);
+    
+        const totalActivities = await UserActivities.countDocuments(query);
+    
+        res.json({
+          activities,
+          totalActivities,
+          totalPages: Math.ceil(totalActivities / limit),
+          currentPage: page
+        });
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+};
+
+
+exports.createActivity = async (req, res) => {
+  try {
+    const activity = new UserActivities(req.body);
+    await activity.save();
+    res.status(201).send(activity);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+exports.updateActivity = async (req, res) => {
+  try {
+    const activity = await UserActivities.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(activity);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+exports.deleteActivity = async (req, res) => {
+  try {
+    await UserActivities.findByIdAndDelete(req.params.id);
+    res.status(204).send();
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
 
 // Function to handle login
 exports.login = async (req, res) => {
@@ -34,10 +91,9 @@ exports.login = async (req, res) => {
     }
 };
 
-// authController.js
 
 
-// Configure nodemailer
+// Emailling Configure nodemailer
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -125,23 +181,28 @@ exports.resetPassword = async (req, res) => {
     }
 };
 
-// Signup controller
+// Signup
 exports.signup = async (req, res) => {
     try {
         const { fullname, email, username, password } = req.body;
+        const profilePicture = req.file ? req.file.path : null;
 
-        // Check if a user with the same email or username already exists
         const existingUser = await User.findOne({ $or: [{ email }, { username }] });
 
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create a new user
-        const newUser = new User({ fullname, email, username, password: hashedPassword });
+        const newUser = new User({
+            fullname,
+            email,
+            username,
+            password: hashedPassword,
+            profilePicture
+        });
+
         await newUser.save();
 
         res.status(201).json({ message: 'User created successfully' });
@@ -167,4 +228,51 @@ exports.authenticateToken = (req, res, next) => {
         req.user = user;
         next(); // Proceed to the next middleware or route handler
     });
+};
+
+exports.getStatusData = async (req, res) => {
+  try {
+    const statusCounts = await UserActivities.aggregate([
+      { 
+        $group: {
+          _id: "$status",
+          count: { $sum: 1 }
+        }
+      }
+    ]);
+
+    // Initialize counts for all statuses
+    const initialCounts = {
+      Todo: 0,
+      Ongoing: 0,
+      Done: 0
+    };
+
+    // Update the counts with actual values from the database
+    statusCounts.forEach(item => {
+      initialCounts[item._id] = item.count;
+    });
+
+    // Calculate the total number of activities
+    const totalActivities = Object.values(initialCounts).reduce((acc, count) => acc + count, 0);
+
+    // Calculate percentages for each status
+    const labels = Object.keys(initialCounts);
+    const values = Object.values(initialCounts).map(count => ((count / totalActivities) * 100).toFixed(2));
+
+    const responseData = {
+      labels,
+      datasets: [
+        {
+          data: values,
+          backgroundColor: ['#f39c12', '#00aba9', '#2ecc71'] // Adjust colors as needed
+        },
+      ],
+    };
+
+    res.json(responseData);
+  } catch (error) {
+    console.error('Error fetching status data:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
 };

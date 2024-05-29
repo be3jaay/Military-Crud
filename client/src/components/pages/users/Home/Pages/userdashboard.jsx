@@ -36,7 +36,7 @@ const UserDashboard = () => {
     e.preventDefault();
     try {
       if (editing) {
-        const response = await axios.put(`http://localhost:5000/activities/${currentActivityId}`, activity);
+        const response = await axios.put(`http://localhost:7000/activities/${currentActivityId}`, activity);
         setActivities((prevActivities) => 
           prevActivities.map((act) => (act._id === currentActivityId ? response.data : act))
         );
@@ -44,7 +44,7 @@ const UserDashboard = () => {
         setCurrentActivityId(null);
         document.getElementById('my_modal_5').close();
       } else {
-        const response = await axios.post('http://localhost:5000/activities', activity);
+        const response = await axios.post('http://localhost:7000/activities', activity);
         setActivities((prevActivities) => [...prevActivities, response.data]);
       }
       clearForm();
@@ -62,7 +62,7 @@ const UserDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/activities/${id}`);
+      await axios.delete(`http://localhost:7000/activities/${id}`);
       setActivities((prevActivities) => prevActivities.filter((act) => act._id !== id));
     } catch (error) {
       console.error('Error deleting activity:', error);
@@ -84,7 +84,7 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/activities', {
+        const response = await axios.get('http://localhost:7000/activities', {
           params: {
             search: searchQuery,
             page: currentPage,

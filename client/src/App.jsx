@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-/* loading Screen */
-import Spinner from './components/pages/users/Home/Spinner'; // Import the Spinner component
+import React, { useState, useEffect, useContext } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AuthContext from "./AuthContext";
+import Spinner from './components/pages/users/Home/Spinner';
 
 /* users */
 import Signup from './components/pages/users/Auth/registration';
@@ -21,14 +18,14 @@ import AuthAdmin from './components/pages/admin/auth';
 import AdminAnalytics from './components/pages/admin/adminAnalytics';
 import Pending from './components/pages/admin/Home/pending';
 import AdminProfile from './components/pages/admin/Home/adminProfile';
-import Accepted from './components/pages/admin/Home/accepted'
+import Accepted from './components/pages/admin/Home/accepted';
 
 import './App.css';
 
 function App() {
-
   /* spinner loading */
   const [loading, setLoading] = useState(true);
+  const { isAuthenticated } = useContext(AuthContext); // Get authentication state
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,16 +46,28 @@ function App() {
       <div className="app">
         <Routes>
           {/* Users */}
-          <Route exact path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={isAuthenticated ? <Navigate to="/userdashboard" /> : <Login />} />
+          <Route path="/login" element={isAuthenticated ? <Navigate to="/userdashboard" /> : <Login />} /> 
           <Route path="/registration" element={<Signup />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />    
+          <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-          <Route path="/userdashboard" element={<Userdashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/viewAnalytics" element={<ViewAnalytics />} />
-          <Route path="/activities" element={<Activities />} />
-
+          
+          <Route
+            path="/userdashboard"
+            element={isAuthenticated ? <Userdashboard /> : <Navigate to="/userdashboard" />}
+          />
+          <Route
+            path="/profile"
+            element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/viewAnalytics"
+            element={isAuthenticated ? <ViewAnalytics /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/activities"
+            element={isAuthenticated ? <Activities /> : <Navigate to="/login" />}
+          />
 
           {/* Admin */}
           <Route path="/admin/auth" element={<AuthAdmin />} />
@@ -66,7 +75,6 @@ function App() {
           <Route path="/adminProfile" element={<AdminProfile />} />
           <Route path="/pending" element={<Pending />} />
           <Route path="/accepted" element={<Accepted />} />
-
         </Routes>
       </div>
     </Router>

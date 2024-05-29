@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "Please provide an Email!"],
-        unique: [true, "Email already exists"] // Specify custom error message
+        unique: [true, "Email already exists"]
     },
     username: {
         type: String,
@@ -19,7 +19,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide a password!"]
     },
-    // Add resetToken and resetTokenExpiry fields for password reset functionality
+    profilePicture: {
+        type: String, // Assuming you store the file name or URL
+        default: null // Set default value to null
+    },
     resetToken: {
         type: String,
         default: null
@@ -27,7 +30,7 @@ const UserSchema = new mongoose.Schema({
     resetTokenExpiry: {
         type: Date,
         default: null
-    },
+    }
 });
 
 module.exports = mongoose.model("User", UserSchema);
